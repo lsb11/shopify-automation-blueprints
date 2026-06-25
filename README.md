@@ -29,7 +29,7 @@ You'll need a free [Make.com](https://www.make.com/) account, a Shopify store, a
 5. **Add your credentials** — in the HTTP module, replace `YOUR_PIXEL_ID` and `YOUR_ACCESS_TOKEN` with your values from TikTok Ads Manager.
 6. **Test** — place a test order, then check TikTok Ads Manager → Events → Test Events for a server-side `CompletePayment` within 2–3 minutes.
 
-A full walkthrough with screenshots is available [here](https://stackarchitect.xyz/tiktok-events-api-shopify/).
+A full walkthrough with screenshots is available in the [TikTok Events API Shopify setup guide](https://stackarchitect.xyz/tiktok-events-api-shopify/).
 
 ---
 
