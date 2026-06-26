@@ -2,6 +2,8 @@
 
 How the Shopify `orders/paid` webhook payload maps to TikTok Events API parameters in the HTTP module. All PII is SHA-256 hashed before sending, per TikTok's spec.
 
+![Shopify to TikTok field mapping: which fields are SHA-256 hashed, which pass through](assets/field-mapping-diagram.svg)
+
 | TikTok parameter | Source (Shopify webhook) | Hashed? |
 |------------------|--------------------------|---------|
 | `event` | constant: `CompletePayment` | no |

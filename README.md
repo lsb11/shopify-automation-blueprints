@@ -35,7 +35,7 @@ A full walkthrough with screenshots is available in the [TikTok Events API Shopi
 
 ## Why server-side tracking?
 
-iOS privacy changes and ad blockers drop an estimated 20–40% of browser-pixel purchase events. Server-side tracking sends the purchase from your server (via Make.com) directly to the ad platform's API, so it's invisible to browser-side blocking — you recover conversions your pixel is silently losing.
+iOS privacy changes and ad blockers drop an estimated [20–40% of browser-pixel purchase events](https://stackarchitect.xyz/shopify-ios-attribution-gap-benchmark/). Server-side tracking sends the purchase from your server (via Make.com) directly to the ad platform's API, so it's invisible to browser-side blocking — you recover conversions your pixel is silently losing.
 
 The same Make.com pattern in this blueprint can be extended to Meta's Conversions API and Google Enhanced Conversions; the TikTok scenario here is a clean, self-contained starting point you can adapt.
 
