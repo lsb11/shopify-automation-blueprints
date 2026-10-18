@@ -8,15 +8,19 @@ How the Shopify `orders/paid` webhook payload maps to TikTok Events API paramete
 |------------------|--------------------------|---------|
 | `event` | constant: `CompletePayment` | no |
 | `event_time` | `created_at` (Unix) | no |
-| `event_id` | `id` (for Pixel dedup) | no |
-| `user.email` | `email` | SHA-256 |
-| `user.phone` | `phone` / `billing_address.phone` | SHA-256 |
+| `event_id` | `id` (the order ID) | no |
+| `user.email` | `email`, trimmed and lower-cased first | SHA-256 |
+| `user.phone` | `phone`, spaces removed; sent empty when the order has none | SHA-256 |
 | `user.ip` | `client_details.browser_ip` | no (TikTok hashes server-side) |
 | `user.user_agent` | `client_details.user_agent` | no |
 | `properties.value` | `total_price` | no |
 | `properties.currency` | `currency` | no |
-| `properties.contents` | `line_items[]` → content_id, quantity, price | no |
+| `properties.order_id` | `id` | no |
 
-> Set the HTTP body to **Key-value (Map mode)** in Make.com so the hashing expressions (`sha256(...)`) evaluate rather than being sent as literal text.
+`properties.contents` (line items) is not in the shipped blueprint. Add it with an iterator and an aggregator if you run TikTok catalogue ads.
+
+> The HTTP module sends a raw JSON body, and Make.com evaluates the `{{...}}` expressions inside it, including `sha256(...)`. After importing, open the module and check the expressions show as mapped items, not plain text.
+
+> **Deduplication:** TikTok can only merge a browser event and a server event that carry the same `event_id`. This blueprint uses the Shopify order ID. Shopify's TikTok app does not document the `event_id` its pixel sends, so check Test Events and Diagnostics in TikTok Events Manager for duplicate purchases after a test order.
 
 Full explanation: https://stackarchitect.xyz/tiktok-events-api-shopify/
