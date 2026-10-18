@@ -44,14 +44,14 @@
 <rect x="30" y="258" width="140" height="34" rx="6" class="neutral" stroke-width="1"/>
 <text x="100" y="279" text-anchor="middle" font-weight="500" font-size="14">id</text>
 <rect x="30" y="302" width="140" height="34" rx="6" class="neutral" stroke-width="1"/>
-<text x="100" y="323" text-anchor="middle" font-weight="500" font-size="14">line_items[]</text>
+<text x="100" y="323" text-anchor="middle" font-weight="500" font-size="14">client_details</text>
 
 <rect x="270" y="120" width="140" height="60" rx="8" class="hashfill" stroke-width="1.5"/>
 <text x="340" y="146" text-anchor="middle" font-weight="500" font-size="14">SHA-256 hash</text>
 <text x="340" y="164" text-anchor="middle" font-size="11" class="sub">email, phone only</text>
 <rect x="270" y="238" width="140" height="60" rx="8" class="passfill" stroke-width="1"/>
 <text x="340" y="264" text-anchor="middle" font-weight="500" font-size="14">pass-through</text>
-<text x="340" y="282" text-anchor="middle" font-size="11" class="sub">value, id, items</text>
+<text x="340" y="282" text-anchor="middle" font-size="11" class="sub">value, currency, id</text>
 
 <rect x="510" y="120" width="140" height="60" rx="6" class="piifill" stroke-width="1"/>
 <text x="580" y="146" text-anchor="middle" font-weight="500" font-size="14">user.email</text>
@@ -61,7 +61,7 @@
 <text x="580" y="256" text-anchor="middle" font-size="11" class="sub">+ currency</text>
 <rect x="510" y="274" width="140" height="44" rx="6" class="ttfill" stroke-width="1"/>
 <text x="580" y="294" text-anchor="middle" font-weight="500" font-size="14">event_id</text>
-<text x="580" y="310" text-anchor="middle" font-size="11" class="sub">pixel dedup</text>
+<text x="580" y="310" text-anchor="middle" font-size="11" class="sub">order ID</text>
 
 <line x1="170" y1="90" x2="266" y2="135" marker-end="url(#arrow)"/>
 <line x1="170" y1="140" x2="266" y2="150" marker-end="url(#arrow)"/>
@@ -75,6 +75,6 @@
 
 <rect x="30" y="370" width="620" height="74" rx="8" class="neutral" stroke-width="1"/>
 <text x="50" y="396" font-weight="500" font-size="14">Two things people get wrong</text>
-<text x="50" y="416" font-size="12" class="sub">1 · Set the HTTP body to Key-value (Map mode) or the sha256() expressions send as literal text.</text>
-<text x="50" y="434" font-size="12" class="sub">2 · Send event_id matching your browser pixel so TikTok deduplicates — run both, not one.</text>
+<text x="50" y="416" font-size="12" class="sub">1 · Trim and lower-case the email before sha256(), or TikTok cannot match it.</text>
+<text x="50" y="434" font-size="12" class="sub">2 · Run the pixel too, and check Test Events for duplicate purchases after a test order.</text>
 </svg>
