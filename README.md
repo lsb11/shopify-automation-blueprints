@@ -38,11 +38,14 @@ A full walkthrough with screenshots is available in the [TikTok Events API Shopi
 
 iOS privacy features, cookie limits and ad blockers stop some browser-pixel purchase events reaching ad platforms. How many depends on your traffic; there is no reliable average, which is why the [iOS attribution gap benchmark](https://stackarchitect.xyz/shopify-ios-attribution-gap-benchmark/) collects real store figures rather than quoting one. Server-side tracking sends the purchase from Make.com directly to the ad platform's API, so browser-side blocking cannot stop it.
 
-The same Make.com pattern can be extended to Meta's Conversions API. Google Ads is different: Shopify orders carry no Google click ID, so for most stores the free fix there is enhanced conversions in Shopify's Google & YouTube app ([why](https://stackarchitect.xyz/shopify-google-ads-conversion-tracking/)).
+The same Make.com pattern can be extended to Meta's Conversions API: the [CAPI Shield setup](https://stackarchitect.xyz/capi-shield/) walks through it field by field. Google Ads is different: Shopify orders carry no Google click ID, so for most stores the free fix there is enhanced conversions in Shopify's Google & YouTube app ([why](https://stackarchitect.xyz/shopify-google-ads-conversion-tracking/)).
 
 Further reading (all free, no signup):
 - [Shopify server-side tracking: the complete setup guide](https://stackarchitect.xyz/blog/shopify-server-side-tracking-complete-setup-guide/)
 - [How to fix Shopify conversion tracking after iOS updates](https://stackarchitect.xyz/blog/how-to-fix-shopify-conversion-tracking-after-ios-updates/)
+- [Make.com for Shopify: free setup and credit limits](https://stackarchitect.xyz/make-com-shopify/)
+- [Reliable Shopify automations: retries, errors and duplicate webhooks](https://stackarchitect.xyz/blog/the-complete-guide-to-reliable-shopify-automations/)
+- [Meta Conversions API payload validator](https://stackarchitect.xyz/meta-capi-payload-validator/): check an event before it goes live
 
 ---
 
