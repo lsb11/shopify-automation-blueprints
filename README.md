@@ -27,7 +27,7 @@ You'll need a free [Make.com](https://www.make.com/) account, a Shopify store, a
 3. **Copy your webhook URL** — open the Webhooks module in the imported scenario and copy the generated URL.
 4. **Add the Shopify webhook** — Shopify Admin → Settings → Notifications → Webhooks → create one for **Order payment**, paste your Make.com URL, format JSON.
 5. **Add your credentials**: in the HTTP module, replace `YOUR_PIXEL_ID` and `YOUR_ACCESS_TOKEN` with your values from TikTok Ads Manager.
-6. **Keep failed runs**: the blueprint turns on *Allow storing of incomplete executions*, so a rejected request is kept for retry instead of disappearing. Leave it on.
+6. **Keep failed runs**: the HTTP request has Make's *Retry* error handler (older guides call it Break), and the scenario has *Store incomplete executions* switched on. A request that fails with an HTTP error is retried 3 times, 15 minutes apart, then kept under *Incomplete executions* for you to fix and re-run. Leave both on.
 7. **Test**: place a test order, then check TikTok Ads Manager → Events → Test Events for a server-side `CompletePayment` with the order's real value and currency.
 
 A full walkthrough with screenshots is available in the [TikTok Events API Shopify setup guide](https://stackarchitect.xyz/tiktok-events-api-shopify/).

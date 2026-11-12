@@ -29,6 +29,8 @@ When a customer pays, Shopify fires an `orders/paid` webhook to Make.com. The sc
 
 > **Fixed 18 Oct 2026.** Earlier versions of `blueprint.json` sent a fixed test event (`event_id` `test_123`, a fixed time and a $10 value) instead of each order's data, nested the customer fields under an Events 1.0 `context` object, and hashed the email without lower-casing it. If you imported it before this date, re-import it or replace the HTTP module's body with the one in `blueprint.json`.
 
+> **Changed 12 Nov 2026.** The HTTP request now has Make's Retry error handler: a request that fails with an HTTP error is retried 3 times, 15 minutes apart, then kept under the scenario's *Incomplete executions*. Earlier copies stored the failed run but never retried it. To update a copy you imported before, right-click the HTTP module → *Add error handler* → *Retry*, and check *Scenario settings → Store incomplete executions* is *Yes*.
+
 ---
 
 ## Setup
@@ -54,6 +56,9 @@ Detailed version, with troubleshooting: https://stackarchitect.xyz/tiktok-events
 
 **Does this replace my browser Pixel?**
 No, run both. TikTok recommends Events API *alongside* the Pixel. TikTok merges the two only when they carry the same `event_id`; this blueprint uses the Shopify order ID, and Shopify's TikTok app does not document the ID its pixel sends, so check Test Events and Diagnostics for duplicates.
+
+**Will Make show me when TikTok rejects an event?**
+Only when TikTok answers with an HTTP error: those runs are retried, then kept under *Incomplete executions*. TikTok can also report a problem in the response body's `code` field while answering with HTTP 200, and Make treats that as success. When you test, open the run in the scenario's *History*, click the HTTP module and read the response: `"code": 0` means TikTok accepted the event.
 
 **Why `CompletePayment` and not `Purchase`?**
 TikTok's purchase event is named `CompletePayment` (unlike Meta/Google's `Purchase`). Using the wrong name means events won't optimise campaigns.
